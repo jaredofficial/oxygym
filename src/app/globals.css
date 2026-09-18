@@ -1,0 +1,159 @@
+@import "tailwindcss";
+
+@layer base {
+  /* Default Core Theme - Dark Mode */
+  :root,
+  [data-theme="core"][data-mode="dark"],
+  [data-mode="dark"] {
+    --bg-primary: #0a0a0c;
+    --bg-secondary: #121216;
+    --bg-card: #18181c;
+    --bg-elevated: #22222a;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --border-glow: rgba(255, 30, 39, 0.3);
+    --accent: #ff1e27;
+    --accent-hover: #e50914;
+    --accent-glow: rgba(255, 30, 39, 0.4);
+    --accent-subtle: rgba(255, 30, 39, 0.12);
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --text-muted: #71717a;
+    --badge-bg: #ff1e27;
+    --badge-text: #ffffff;
+  }
+
+  /* Core Theme - Light Mode */
+  [data-theme="core"][data-mode="light"],
+  [data-mode="light"] {
+    --bg-primary: #f8f9fa;
+    --bg-secondary: #f1f3f5;
+    --bg-card: #ffffff;
+    --bg-elevated: #e9ecef;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --border-glow: rgba(214, 14, 21, 0.25);
+    --accent: #d60e15;
+    --accent-hover: #b00b11;
+    --accent-glow: rgba(214, 14, 21, 0.3);
+    --accent-subtle: rgba(214, 14, 21, 0.08);
+    --text-primary: #0d0d11;
+    --text-secondary: #4a4d56;
+    --text-muted: #717582;
+    --badge-bg: #d60e15;
+    --badge-text: #ffffff;
+  }
+
+  /* Premium Theme - Dark Mode (Park Street) */
+  [data-theme="premium"][data-mode="dark"] {
+    --bg-primary: #050507;
+    --bg-secondary: #0d0d12;
+    --bg-card: #14141c;
+    --bg-elevated: #1e1e28;
+    --border-color: rgba(212, 175, 55, 0.25);
+    --border-glow: rgba(212, 175, 55, 0.4);
+    --accent: #d4af37;
+    --accent-hover: #f3cf65;
+    --accent-glow: rgba(212, 175, 55, 0.45);
+    --accent-subtle: rgba(212, 175, 55, 0.12);
+    --text-primary: #fbf9f5;
+    --text-secondary: #a6a29a;
+    --text-muted: #78746c;
+    --badge-bg: #d4af37;
+    --badge-text: #050507;
+  }
+
+  /* Premium Theme - Light Mode (Park Street) */
+  [data-theme="premium"][data-mode="light"] {
+    --bg-primary: #fcfbfa;
+    --bg-secondary: #f4f0e6;
+    --bg-card: #ffffff;
+    --bg-elevated: #eae3d2;
+    --border-color: rgba(184, 146, 40, 0.2);
+    --border-glow: rgba(184, 146, 40, 0.35);
+    --accent: #b89228;
+    --accent-hover: #9c7a1d;
+    --accent-glow: rgba(184, 146, 40, 0.3);
+    --accent-subtle: rgba(184, 146, 40, 0.08);
+    --text-primary: #14120e;
+    --text-secondary: #5c5850;
+    --text-muted: #827e74;
+    --badge-bg: #b89228;
+    --badge-text: #ffffff;
+  }
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  text-wrap: pretty;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  text-wrap: pretty;
+}
+
+.font-display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.font-subheading {
+  font-family: 'Oswald', sans-serif;
+  letter-spacing: 0.03em;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* Diagonal Marquee Accent Banner */
+.diagonal-strip {
+  transform: rotate(-2deg);
+  background: var(--accent);
+  color: #ffffff;
+}
+
+/* Custom Utilities */
+.btn-accent {
+  background-color: var(--accent);
+  color: var(--badge-text);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px var(--accent-glow);
+}
+
+.btn-accent:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.card-gym {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.card-gym:hover {
+  border-color: var(--accent);
+  box-shadow: 0 10px 30px var(--accent-subtle);
+  transform: translateY(-4px);
+}
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
