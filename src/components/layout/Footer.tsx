@@ -116,7 +116,7 @@ export function Footer() {
                 <a href="https://maps.app.goo.gl/WQFAV7urcLNgZrpx7" target="_blank" rel="noreferrer" className="font-bold text-[var(--text-primary)] hover:text-[var(--accent)] transition-colors block">
                   CHANDNI BRANCH 📍
                 </a>
-                <p>4th & 5th Floor, Archade Building, 25 B, Chandni Chowk St, Esplanade, Bowbazar, Kolkata 700072</p>
+                <p>4th Floor, Chandni Arcade, 25B Chandni Chowk, Kolkata - 700072</p>
                 <p className="text-[var(--accent)] font-mono mt-0.5">📞 +91 98313 63981 | oxygymchandni@gmail.com</p>
               </div>
               <div>
@@ -165,7 +165,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://wa.me/919831363981?text=Hey%20I'm%20interested%20in%20the%20Park%20Street%20Oxy%20Gym%20branch,%20can%20you%20tell%20me%20more?"
+                href="https://wa.me/917595876699?text=Hey%20I'm%20interested%20in%20the%20Park%20Street%20Oxy%20Gym%20branch,%20can%20you%20tell%20me%20more?"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full px-3.5 py-2.5 rounded-xl bg-amber-500/10 border border-amber-500/30 text-white hover:bg-amber-500 hover:text-black transition-all text-xs font-bold flex items-center justify-between group shadow-sm hover:scale-[1.02]"

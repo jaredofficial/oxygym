@@ -68,7 +68,7 @@ export function BranchSelectorModal() {
                   CHANDNI BRANCH
                 </h3>
                 <p className="text-xs text-[var(--text-secondary)] mt-1 line-clamp-2">
-                  4th & 5th Floor, Archade Building, Chandni Chowk St, Esplanade
+                  4th Floor, Chandni Arcade, 25B Chandni Chowk, Kolkata - 700072
                 </p>
                 <div className="mt-4 space-y-1.5 text-xs text-[var(--text-muted)]">
                   <p>• Jerai Fitness Powerlifting Racks</p>

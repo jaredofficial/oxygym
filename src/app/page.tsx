@@ -10,6 +10,7 @@ import { StatCounter } from '@/components/ui/StatCounter';
 import { EquipmentGrid } from '@/components/ui/EquipmentGrid';
 import { TestimonialCarousel } from '@/components/ui/TestimonialCarousel';
 import { TransformationsSection } from '@/components/ui/TransformationsSection';
+import { FacilitiesCarousel } from '@/components/ui/FacilitiesCarousel';
 
 export default function HomePage() {
   const { openBranchModal } = useBranchModal();
@@ -264,38 +265,18 @@ export default function HomePage() {
         <EquipmentGrid branchFilter="all" />
       </section>
 
-      {/* 7. FACILITIES GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      {/* 7. DUAL-ROW AUTO-SCROLLING FACILITIES CAROUSEL */}
+      <section className="space-y-6 overflow-hidden">
         <div className="text-center space-y-3">
           <h2 className="text-4xl sm:text-6xl font-display font-black uppercase">
-            EXPLORE OUR <span className="text-[var(--accent)]">FACILITIES</span>
+            EXPLORE OUR <span className="text-[var(--accent)]">LUXURY FACILITIES</span>
           </h2>
+          <p className="text-sm text-[var(--text-secondary)] max-w-xl mx-auto">
+            Swipe or hover over any card below to explore our state-of-the-art facilities across all branches. Click the Being Strong Crown card to visit their official website.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {FACILITIES_DATA.map((fac) => (
-            <div
-              key={fac.id}
-              className="group relative overflow-hidden rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:border-[var(--accent)] transition-all duration-300 shadow-xl h-72 flex flex-col justify-end p-6 hover:-translate-y-1"
-            >
-              <img
-                src={fac.image}
-                alt={fac.name}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 filter brightness-75"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-black/50 to-transparent" />
-
-              <div className="relative z-10 space-y-2">
-                <h3 className="text-2xl font-display font-bold text-white group-hover:text-[var(--accent)] transition-colors">
-                  {fac.name}
-                </h3>
-                <p className="text-xs text-zinc-300 leading-relaxed">
-                  {fac.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <FacilitiesCarousel />
       </section>
 
       {/* 8. TESTIMONIALS */}

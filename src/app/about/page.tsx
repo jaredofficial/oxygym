@@ -112,13 +112,20 @@ export default function AboutPage() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {TRAINERS_DATA.map((tr) => (
-            <div key={tr.id} className="rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden">
-              <img src={tr.image} alt={tr.name} className="w-full h-64 object-cover" />
-              <div className="p-6 space-y-1">
+            <div key={tr.id} className="group relative rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden shadow-xl">
+              <div className="relative h-72 w-full overflow-hidden bg-black">
+                <img
+                  src="/media/facilities/hyrox_dark_gym.png"
+                  alt="Gym Background"
+                  className="absolute inset-0 w-full h-full object-cover filter blur-md opacity-40 scale-110"
+                />
+                <img src={tr.image} alt={tr.name} className="relative z-10 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" />
+              </div>
+              <div className="p-6 space-y-1 relative z-20">
                 <h3 className="text-xl font-display font-bold">{tr.name}</h3>
-                <p className="text-xs font-bold text-[var(--accent)]">{tr.role}</p>
+                <p className="text-xs font-bold text-[var(--accent)]">{tr.role} • {tr.experience}</p>
                 <p className="text-xs text-[var(--text-secondary)]">{tr.branch}</p>
               </div>
             </div>

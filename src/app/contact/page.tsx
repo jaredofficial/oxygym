@@ -65,7 +65,7 @@ export default function ContactPage() {
 
                 <div>
                   <p className="font-bold text-amber-400">PARK STREET VIP LINE</p>
-                  <p className="text-[var(--text-primary)] font-mono text-sm">+91 98313 63981 / +91 91477 09674</p>
+                  <p className="text-[var(--text-primary)] font-mono text-sm">+91 75958 76699</p>
                   <p className="text-[var(--text-muted)]">oxygymgoldparkstreet@gmail.com</p>
                 </div>
               </div>

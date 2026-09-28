@@ -54,7 +54,7 @@ export default function ChandniPage() {
 
           <div className="flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-300 font-semibold pt-2">
             <span className="flex items-center gap-1.5">
-              <MapPin className="w-4 h-4 text-[var(--accent)]" /> Archade Bldg, 25 B Chandni Chowk St, Esplanade
+              <MapPin className="w-4 h-4 text-[var(--accent)]" /> 4th Floor, Chandni Arcade, 25B Chandni Chowk, Kolkata - 700072
             </span>
             <span className="flex items-center gap-1.5">
               <Clock className="w-4 h-4 text-[var(--accent)]" /> {branch.hours}
@@ -124,23 +124,47 @@ export default function ChandniPage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
           <h2 className="text-4xl sm:text-6xl font-display font-black uppercase">
-            CHANDNI <span className="text-[var(--accent)]">TRAINERS</span>
+            CHANDNI <span className="text-[var(--accent)]">SENIOR TRAINERS</span>
           </h2>
+          <p className="text-sm text-[var(--text-secondary)] max-w-md mx-auto">
+            Meet Chandni's dedicated senior trainers, driving elite athletic transformations and biomechanical strength.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {chandniTrainers.map((tr) => (
             <div
               key={tr.id}
-              className="rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden shadow-xl"
+              className="group relative rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:border-[var(--accent)] transition-all duration-300 overflow-hidden shadow-2xl hover:-translate-y-1"
             >
-              <img src={tr.image} alt={tr.name} className="w-full h-64 object-cover" />
-              <div className="p-6 space-y-2">
-                <h3 className="text-xl font-display font-bold text-[var(--text-primary)]">
-                  {tr.name}
-                </h3>
-                <p className="text-xs font-bold text-[var(--accent)]">{tr.role}</p>
-                <p className="text-xs text-[var(--text-secondary)]">{tr.specialty}</p>
+              <div className="relative h-96 w-full overflow-hidden bg-black">
+                {/* Layer 1: Dark Blurred Gym Background */}
+                <img
+                  src="/media/facilities/hyrox_dark_gym.png"
+                  alt="Gym Background"
+                  className="absolute inset-0 w-full h-full object-cover filter blur-lg scale-110 opacity-50 group-hover:scale-125 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-black/40 z-10" />
+                
+                {/* Layer 2: High-Resolution Composited Trainer Image */}
+                <img
+                  src={tr.image}
+                  alt={tr.name}
+                  className="relative z-20 w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+
+              <div className="p-6 space-y-2 relative z-20">
+                <div className="flex items-center justify-between">
+                  <h3 className="text-2xl font-display font-bold text-[var(--text-primary)]">
+                    {tr.name}
+                  </h3>
+                  <span className="text-xs font-black uppercase px-3 py-1 rounded-full bg-[var(--accent-subtle)] text-[var(--accent)] border border-[var(--accent)]/30">
+                    {tr.role}
+                  </span>
+                </div>
+                <p className="text-xs font-bold text-[var(--accent)]">{tr.experience}</p>
+                <p className="text-sm text-[var(--text-secondary)]">{tr.specialty}</p>
               </div>
             </div>
           ))}
