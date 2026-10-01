@@ -34,9 +34,23 @@ export default function ParkStreetPage() {
   const [email, setEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
-  const handleNotifySubmit = (e: React.FormEvent) => {
+  const handleNotifySubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: 'f9145200-8707-4541-abad-a89bdc082026',
+          subject: 'Park Street VIP Pre-Launch Invitation Request',
+          email,
+          branch: 'Park Street Flagship',
+        }),
+      });
+    } catch (err) {
+      console.error('VIP form submit error:', err);
+    }
     setSubmitted(true);
   };
 
@@ -46,7 +60,7 @@ export default function ParkStreetPage() {
       title: 'Being Strong Crown Series',
       subtitle: 'East India First Exclusive Tier',
       description: 'The topmost luxury line of heavy-duty biomechanics gear powered by Being Strong. Engineered for unmatched resistance and muscle hypertrophy.',
-      image: '/media/chandni/images/IMG_8875.jpg',
+      image: '/media/chandni/images/IMG_8875.webp',
       badge: 'OFFICIAL PARTNER',
       externalUrl: 'https://www.jeraifitness.com/type-of-product/crown',
       icon: Dumbbell,
@@ -137,7 +151,7 @@ export default function ParkStreetPage() {
       title: 'HYROX Athletic Arena',
       subtitle: 'Official Competition Gear & Sleds',
       description: 'Custom indoor turf arena fitted with official HYROX competition sleds, ski-ergs, wall balls, and assault bikes for competitive athletes.',
-      image: '/media/bhawanipur/images/DSC_0065.JPG',
+      image: '/media/bhawanipur/images/DSC_0065.webp',
       badge: 'ATHLETIC HUB',
       icon: Dumbbell,
     },
@@ -146,7 +160,7 @@ export default function ParkStreetPage() {
       title: 'Executive Work Pods',
       subtitle: 'Soundproof High-Speed Workspaces',
       description: 'Quiet soundproof work cabins with high-speed Wi-Fi, power ports, and ergonomic seating so executive members never miss a meeting.',
-      image: '/media/chandni/images/IMG_9208.jpg',
+      image: '/media/chandni/images/IMG_9208.webp',
       badge: 'WORK & TRAIN',
       icon: Laptop,
     },
@@ -157,7 +171,7 @@ export default function ParkStreetPage() {
       {/* Canvas Fog Animation Background */}
       <FogEffect />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pt-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20 pt-36 sm:pt-44 lg:pt-48">
         {/* 1. MOODY LUXURY HERO WITH SMOOTH BLEND */}
         <section className="relative text-center space-y-8 max-w-4xl mx-auto min-h-[60vh] flex flex-col items-center justify-center">
           <motion.div
@@ -215,14 +229,14 @@ export default function ParkStreetPage() {
 
         {/* 3. DUAL-ROW AUTO-SCROLLING FACILITIES CAROUSEL */}
         <section className="space-y-6">
-          <div className="text-center space-y-3">
-            <span className="px-3.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-500/15 text-amber-300 border border-amber-500/30">
+          <div className="text-center flex flex-col items-center gap-3">
+            <span className="inline-block px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest bg-amber-500/15 text-amber-300 border border-amber-500/30 mb-2">
               WORLD-CLASS AMENITIES
             </span>
-            <h2 className="text-4xl sm:text-6xl font-display font-black uppercase text-white">
+            <h2 className="text-4xl sm:text-6xl font-display font-black uppercase text-white leading-tight">
               PARK STREET <span className="text-amber-400">EXCLUSIVE FACILITIES</span>
             </h2>
-            <p className="text-sm text-zinc-400 max-w-xl mx-auto">
+            <p className="text-sm text-zinc-400 max-w-xl mx-auto pt-1">
               Swipe or hover over any card below to explore our luxury facilities. Click the Being Strong Crown card to visit their official website.
             </p>
           </div>
@@ -235,14 +249,14 @@ export default function ParkStreetPage() {
           <div className="relative overflow-hidden rounded-3xl bg-gradient-to-b from-[#181822] to-[#0c0c12] border border-amber-500/40 p-8 sm:p-12 shadow-2xl text-center space-y-6">
             <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="space-y-2">
-              <span className="px-3.5 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-amber-500/20 text-amber-300 border border-amber-500/40">
+            <div className="flex flex-col items-center gap-3">
+              <span className="inline-block px-4 py-1.5 rounded-full text-[10px] sm:text-xs font-black uppercase tracking-widest bg-amber-500/20 text-amber-300 border border-amber-500/40 mb-2">
                 GRAND OPENING: 11TH OCTOBER 2026
               </span>
-              <h2 className="text-3xl sm:text-5xl font-display font-black uppercase text-white pt-1">
+              <h2 className="text-3xl sm:text-5xl font-display font-black uppercase text-white leading-tight">
                 GET VIP <span className="text-amber-400">PRE-LAUNCH INVITATION</span>
               </h2>
-              <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto">
+              <p className="text-xs sm:text-sm text-zinc-400 max-w-md mx-auto pt-1">
                 Sign up to receive founding member passes, preview tour access, and VIP launch tickets for the 11th of October opening.
               </p>
             </div>

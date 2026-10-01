@@ -28,7 +28,7 @@ export default function ChandniPage() {
   return (
     <div className="space-y-24 pb-16 overflow-hidden">
       {/* 1. HERO SECTION WITH SMOOTH BLEND */}
-      <section className="relative min-h-[85vh] flex items-center justify-center pt-28 pb-20 overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center justify-center pt-36 sm:pt-40 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-black/65 z-10" />
         <video
           autoPlay

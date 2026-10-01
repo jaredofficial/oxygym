@@ -204,14 +204,14 @@ export function FacilitiesCarousel() {
 
   return (
     <div className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-6 space-y-6">
-      {/* Left Cloud / Blur Gradient Mask */}
-      <div className="absolute left-0 top-0 bottom-0 w-20 sm:w-48 lg:w-72 bg-gradient-to-r from-[#050507] via-[#050507]/85 to-transparent z-20 pointer-events-none backdrop-blur-[2px]" />
+      {/* Left Ultra-Soft Fade Mask Overlay */}
+      <div className="absolute left-0 top-0 bottom-0 w-24 sm:w-60 lg:w-96 bg-gradient-to-r from-[#050507] via-[#050507]/90 via-[#050507]/40 to-transparent z-20 pointer-events-none" />
 
-      {/* Right Cloud / Blur Gradient Mask */}
-      <div className="absolute right-0 top-0 bottom-0 w-20 sm:w-48 lg:w-72 bg-gradient-to-l from-[#050507] via-[#050507]/85 to-transparent z-20 pointer-events-none backdrop-blur-[2px]" />
+      {/* Right Ultra-Soft Fade Mask Overlay */}
+      <div className="absolute right-0 top-0 bottom-0 w-24 sm:w-60 lg:w-96 bg-gradient-to-l from-[#050507] via-[#050507]/90 via-[#050507]/40 to-transparent z-20 pointer-events-none" />
 
       {/* ROW 1: Auto-scrolling Left */}
-      <div className="flex overflow-hidden relative group [mask-image:linear-gradient(to_right,transparent_0%,black_8%,black_92%,transparent_100%)]">
+      <div className="flex overflow-hidden relative group [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.5)_4%,black_16%,black_84%,rgba(0,0,0,0.5)_96%,transparent_100%)]">
         <motion.div
           className="flex gap-6 shrink-0 py-2"
           animate={{ x: ['0%', '-33.333%'] }}
@@ -226,7 +226,7 @@ export function FacilitiesCarousel() {
       </div>
 
       {/* ROW 2: Auto-scrolling Right */}
-      <div className="flex overflow-hidden relative group [mask-image:linear-gradient(to_right,transparent_0%,black_8%,black_92%,transparent_100%)]">
+      <div className="flex overflow-hidden relative group [mask-image:linear-gradient(to_right,transparent_0%,rgba(0,0,0,0.5)_4%,black_16%,black_84%,rgba(0,0,0,0.5)_96%,transparent_100%)]">
         <motion.div
           className="flex gap-6 shrink-0 py-2"
           animate={{ x: ['-33.333%', '0%'] }}

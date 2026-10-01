@@ -1,60 +1,73 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Flame, Trophy, Award, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ArrowRight } from 'lucide-react';
+import { useBranchModal } from '@/context/BranchModalContext';
 
 export interface TransformationItem {
   id: string;
-  name: string;
-  branch: string;
-  achievement: string;
+  clientName: string;
   duration: string;
-  description: string;
+  weightResult: string;
+  branch: 'Bhawanipur Branch' | 'Chandni Branch';
   image: string;
-  category: string;
+  beforeImage?: string;
+  afterImage?: string;
+  resultImage?: string;
+  description?: string;
 }
 
 export const TRANSFORMATIONS_LIST: TransformationItem[] = [
   {
-    id: 'tr-1',
-    name: 'Dummy Member',
+    id: 'tr-ch-safa-rahman',
+    clientName: 'Safa Rahman Client',
+    duration: '2 Months',
+    weightResult: '8 KG Lost',
     branch: 'Chandni Branch',
-    achievement: 'Gained 12kg Lean Muscle Mass',
-    duration: '6 Months',
-    description: 'Transformed physique using Jerai powerlifting platforms and customized high-protein nutrition guidance.',
-    image: '/media/chandni/images/612240f744a250350ca899a0f3398205.jpg',
-    category: 'Hypertrophy & Powerlifting',
+    image: '/media/transformations/chandni_safa_after.png',
+    beforeImage: '/media/transformations/chandni_safa_before.png',
+    afterImage: '/media/transformations/chandni_safa_after.png',
+    description: '8 KG weight loss achieved in only 2 months with Trainer Safa Rahman at Oxy Gym Chandni.',
   },
   {
-    id: 'tr-2',
-    name: 'Dummy Member',
+    id: 'tr-ch-burhanuddin',
+    clientName: 'Burhanuddin',
+    duration: '90 Days',
+    weightResult: '7 KG Lost',
+    branch: 'Chandni Branch',
+    image: '/media/transformations/chandni_burhanuddin_7kg_down.jpg',
+    resultImage: '/media/transformations/chandni_burhanuddin_journey.png',
+    description: 'More than weight loss — a health transformation with personalized coaching & progress tracking at Oxy Gym Chandni.',
+  },
+  {
+    id: 'tr-bh-1',
+    clientName: 'Skinny to Strong Athlete',
+    duration: '3 Months',
+    weightResult: '8 KG Gained',
     branch: 'Bhawanipur Branch',
-    achievement: 'Lost 18kg Fat & Toned Core',
-    duration: '5 Months',
-    description: 'Combined HIIT cardio theater sessions, functional battle ropes, and free general training support.',
-    image: '/media/bhawanipur/images/DSC_0080.JPG',
-    category: 'Weight Loss & Conditioning',
+    image: '/media/transformations/bhawanipur_8kg_gain.jpg',
+    resultImage: '/media/transformations/bhawanipur_8kg_result.jpg',
+    description: 'Built with consistency, coaching & discipline at Oxy Gym Bhawanipur.',
   },
   {
-    id: 'tr-3',
-    name: 'Dummy Member',
-    branch: 'Chandni Branch',
-    achievement: 'Reduced Body Fat from 22% to 9%',
+    id: 'tr-bh-2',
+    clientName: 'Coach Sarfraz Client',
     duration: '4 Months',
-    description: 'Trained with 60kg dumbbells and AI workout tracking kiosk for strict macro calibration.',
-    image: '/media/chandni/images/89fc5be6c54433d0622e57d5fc0de2c6.jpg',
-    category: 'Body Recomposition',
+    weightResult: 'Lean Muscle Gain',
+    branch: 'Bhawanipur Branch',
+    image: '/media/transformations/bhawanipur_sarfraz_transform.jpg',
+    resultImage: '/media/transformations/bhawanipur_sarfraz_result.jpg',
+    description: '1-on-1 trainer guided transformation focused on lean muscle mass, strength, and confidence.',
   },
   {
-    id: 'tr-4',
-    name: 'Dummy Member',
-    branch: 'Bhawanipur Branch',
-    achievement: 'Bench 140kg & Squat 200kg',
-    duration: '8 Months',
-    description: 'Hybrid strength athlete program with Olympic barbells and custom Jerai leverage machines.',
-    image: '/media/bhawanipur/images/DSC_0065.JPG',
-    category: 'Strength & Powerlifting',
+    id: 'tr-ch-1',
+    clientName: 'Chandni Member',
+    duration: '5 Months',
+    weightResult: '14 KG Lost',
+    branch: 'Chandni Branch',
+    image: '/media/transformations/chandni_female_toning.jpg',
+    description: 'Total body toning and fat loss transformation at Oxy Gym Chandni.',
   },
 ];
 
@@ -63,62 +76,186 @@ interface TransformationsSectionProps {
 }
 
 export function TransformationsSection({ branchFilter }: TransformationsSectionProps) {
-  const filtered = branchFilter
+  const [selectedItem, setSelectedItem] = useState<TransformationItem | null>(null);
+  const { openBranchModal } = useBranchModal();
+
+  const filteredItems = branchFilter
     ? TRANSFORMATIONS_LIST.filter((t) => t.branch.toLowerCase().includes(branchFilter.toLowerCase()))
     : TRANSFORMATIONS_LIST;
 
   return (
     <div className="space-y-10">
+      {/* Section Header */}
       <div className="text-center space-y-3">
-        <h2 className="text-4xl sm:text-6xl font-display font-black uppercase">
-          REAL MEMBER <span className="text-[var(--accent)]">TRANSFORMATIONS</span>
+        <h2 className="text-4xl sm:text-6xl font-display font-black uppercase leading-tight">
+          MEMBER <span className="text-[var(--accent)]">TRANSFORMATIONS</span>
         </h2>
         <p className="text-sm text-[var(--text-secondary)] max-w-xl mx-auto">
-          Over 100+ documented athletic transformations completed using Oxy Gym’s Jerai gear, steam recovery, and free general training provided to all members.
+          Real results achieved by active members across Oxy Gym branches.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {filtered.map((item) => (
+      {/* Clean Grid of Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredItems.map((item) => (
           <motion.div
-            whileHover={{ y: -6 }}
+            whileHover={{ y: -4 }}
             key={item.id}
-            className="group rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] overflow-hidden hover:border-[var(--accent)] transition-all duration-300 shadow-xl flex flex-col justify-between"
+            onClick={() => setSelectedItem(item)}
+            className="group relative rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] hover:border-[var(--accent)] transition-all duration-300 shadow-xl overflow-hidden cursor-pointer"
           >
-            <div className="relative h-64 overflow-hidden">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg-card)] via-transparent to-transparent" />
-              
-              <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-[var(--accent)] text-white shadow-md flex items-center gap-1">
-                <Trophy className="w-3 h-3" /> {item.duration}
+            {/* Image Preview Container */}
+            <div className="relative h-72 sm:h-80 overflow-hidden bg-black">
+              {item.beforeImage && item.afterImage ? (
+                <div className="grid grid-cols-2 h-full w-full gap-0.5 bg-zinc-800">
+                  <div className="relative h-full overflow-hidden">
+                    <img
+                      src={item.beforeImage}
+                      alt="Before"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded text-[9px] font-black uppercase bg-black/80 text-white">
+                      BEFORE
+                    </span>
+                  </div>
+                  <div className="relative h-full overflow-hidden">
+                    <img
+                      src={item.afterImage}
+                      alt="After"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className="absolute bottom-2 right-2 px-2 py-0.5 rounded text-[9px] font-black uppercase bg-[var(--accent)] text-white">
+                      AFTER
+                    </span>
+                  </div>
+                </div>
+              ) : (
+                <img
+                  src={item.image}
+                  alt={`${item.clientName} - ${item.weightResult}`}
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 pointer-events-none" />
+
+              {/* Branch Tag */}
+              <span className="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider bg-black/70 text-white border border-white/20 backdrop-blur-md z-10">
+                {item.branch}
               </span>
             </div>
 
-            <div className="p-6 space-y-3 flex-grow">
-              <span className="text-[10px] font-extrabold uppercase text-[var(--accent)] tracking-wider">
-                {item.branch}
-              </span>
-
-              <h3 className="text-xl font-display font-bold text-[var(--text-primary)]">
-                {item.name}
-              </h3>
-
-              <div className="p-2.5 rounded-xl bg-[var(--accent-subtle)] border border-[var(--border-glow)] text-xs font-black text-[var(--accent)] flex items-center gap-2">
-                <Award className="w-4 h-4 shrink-0" />
-                <span>{item.achievement}</span>
+            {/* Clean Info: Name, Duration & Weight Result */}
+            <div className="p-5 space-y-1 bg-[var(--bg-card)]">
+              <div className="text-xs font-black uppercase text-[var(--accent)] tracking-wider">
+                {item.clientName}
               </div>
-
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">
-                {item.description}
-              </p>
+              <div className="flex items-center justify-between text-[11px] font-bold text-[var(--text-secondary)] uppercase">
+                <span>DURATION: {item.duration}</span>
+                <span className="text-[var(--text-primary)] font-black">{item.weightResult}</span>
+              </div>
             </div>
           </motion.div>
         ))}
       </div>
+
+      {/* Clean Lightbox Modal */}
+      <AnimatePresence>
+        {selectedItem && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedItem(null)}
+              className="fixed inset-0 bg-black/90 backdrop-blur-md"
+            />
+
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative max-w-3xl w-full max-h-[90vh] overflow-y-auto rounded-3xl bg-[var(--bg-card)] border border-[var(--border-color)] p-6 sm:p-8 shadow-2xl z-10 space-y-6"
+            >
+              <button
+                onClick={() => setSelectedItem(null)}
+                className="absolute top-4 right-4 p-2.5 rounded-full bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:text-white transition-all z-20"
+                aria-label="Close"
+              >
+                <X className="w-5 h-5" />
+              </button>
+
+              <div className="space-y-4 text-center">
+                {/* Poster / Comparison Display */}
+                <div className="rounded-2xl overflow-hidden border border-[var(--border-color)] bg-black shadow-lg">
+                  {selectedItem.beforeImage && selectedItem.afterImage ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 p-2 bg-black">
+                      <div className="space-y-2">
+                        <div className="relative rounded-xl overflow-hidden max-h-[450px]">
+                          <img
+                            src={selectedItem.beforeImage}
+                            alt="Before"
+                            className="w-full h-full object-contain mx-auto"
+                          />
+                        </div>
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-black uppercase bg-black text-white border border-white/20">
+                          BEFORE
+                        </span>
+                      </div>
+                      <div className="space-y-2">
+                        <div className="relative rounded-xl overflow-hidden max-h-[450px]">
+                          <img
+                            src={selectedItem.afterImage}
+                            alt="After"
+                            className="w-full h-full object-contain mx-auto"
+                          />
+                        </div>
+                        <span className="inline-block px-3 py-1 rounded-full text-xs font-black uppercase bg-[var(--accent)] text-white">
+                          AFTER ({selectedItem.weightResult})
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={selectedItem.resultImage || selectedItem.image}
+                      alt={selectedItem.clientName}
+                      className="w-full h-auto max-h-[550px] object-contain mx-auto"
+                    />
+                  )}
+                </div>
+
+                {/* Details */}
+                <div className="space-y-2 pt-2">
+                  <span className="text-xs font-bold uppercase text-[var(--accent)]">
+                    {selectedItem.branch} • DURATION: {selectedItem.duration}
+                  </span>
+                  <h3 className="text-2xl font-display font-black uppercase text-[var(--text-primary)]">
+                    {selectedItem.clientName} — {selectedItem.weightResult}
+                  </h3>
+                  {selectedItem.description && (
+                    <p className="text-xs text-[var(--text-secondary)] max-w-md mx-auto">
+                      {selectedItem.description}
+                    </p>
+                  )}
+                </div>
+
+                {/* CTA */}
+                <div className="pt-3">
+                  <button
+                    onClick={() => {
+                      setSelectedItem(null);
+                      openBranchModal();
+                    }}
+                    className="w-full sm:w-auto px-8 py-3.5 rounded-full btn-accent text-xs font-black uppercase inline-flex items-center justify-center gap-2 shadow-xl"
+                  >
+                    <span>START YOUR TRANSFORMATION</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Dumbbell, Flame, Zap, Shield, Maximize2 } from 'lucide-react';
+import { Dumbbell, Flame, Zap, Shield, Maximize2, ChevronDown, ChevronUp } from 'lucide-react';
 import { EQUIPMENT_ITEMS, EquipmentItem } from '@/data/gymData';
 
 interface EquipmentGridProps {
@@ -12,8 +12,15 @@ interface EquipmentGridProps {
 export function EquipmentGrid({ branchFilter = 'all' }: EquipmentGridProps) {
   const [activeCategory, setActiveCategory] = useState<string>('All');
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
   const categories = ['All', 'Strength', 'Free Weights', 'Cardio', 'Functional'];
+  const INITIAL_SHOW_COUNT = 9; // 3 rows of 3 columns max
+
+  const handleCategoryChange = (cat: string) => {
+    setActiveCategory(cat);
+    setIsExpanded(false);
+  };
 
   const filteredItems = EQUIPMENT_ITEMS.filter((item) => {
     const isBhawanipurTarget = branchFilter === 'bhawanipur' || branchFilter === 'bhavanipur';
@@ -23,6 +30,9 @@ export function EquipmentGrid({ branchFilter = 'all' }: EquipmentGridProps) {
     return matchesBranch && matchesCategory;
   });
 
+  const displayedItems = isExpanded ? filteredItems : filteredItems.slice(0, INITIAL_SHOW_COUNT);
+  const remainingCount = filteredItems.length - INITIAL_SHOW_COUNT;
+
   return (
     <div className="space-y-8">
       {/* Category Filter Tabs */}
@@ -30,7 +40,7 @@ export function EquipmentGrid({ branchFilter = 'all' }: EquipmentGridProps) {
         {categories.map((cat) => (
           <button
             key={cat}
-            onClick={() => setActiveCategory(cat)}
+            onClick={() => handleCategoryChange(cat)}
             className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 ${
               activeCategory === cat
                 ? 'bg-[var(--accent)] text-[var(--badge-text)] shadow-lg shadow-[var(--accent-glow)]'
@@ -45,7 +55,7 @@ export function EquipmentGrid({ branchFilter = 'all' }: EquipmentGridProps) {
       {/* Grid Items */}
       <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <AnimatePresence>
-          {filteredItems.map((item) => (
+          {displayedItems.map((item) => (
             <motion.div
               layout
               initial={{ opacity: 0, scale: 0.9 }}
@@ -93,6 +103,28 @@ export function EquipmentGrid({ branchFilter = 'all' }: EquipmentGridProps) {
           ))}
         </AnimatePresence>
       </motion.div>
+
+      {/* View More / View Less Toggle Button */}
+      {filteredItems.length > INITIAL_SHOW_COUNT && (
+        <div className="text-center pt-4">
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="px-8 py-3.5 rounded-full bg-[var(--bg-card)] border border-[var(--accent)] text-[var(--accent)] hover:bg-[var(--accent)] hover:text-white transition-all text-xs font-black uppercase tracking-wider inline-flex items-center gap-2 shadow-xl hover:scale-105"
+          >
+            {isExpanded ? (
+              <>
+                <span>SHOW LESS EQUIPMENT</span>
+                <ChevronUp className="w-4 h-4" />
+              </>
+            ) : (
+              <>
+                <span>VIEW MORE EQUIPMENT (+{remainingCount} MORE)</span>
+                <ChevronDown className="w-4 h-4" />
+              </>
+            )}
+          </button>
+        </div>
+      )}
 
       {/* Lightbox Modal */}
       {selectedImage && (

@@ -18,13 +18,41 @@ export function PlanCheckoutModal() {
 
   if (!isPlanModalOpen || !selectedPlan) return null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const branchKeyMap: Record<string, string> = {
+      'Chandni Branch': '7810b74d-fff4-44fa-9a44-00f1660dce5d',
+      'Bhawanipur Branch': 'd767a327-3b04-4bd5-8bee-7071554de152',
+      'Park Street Pre-launch': 'f9145200-8707-4541-abad-a89bdc082026',
+    };
+    const access_key = branchKeyMap[formData.preferredBranch] || '7810b74d-fff4-44fa-9a44-00f1660dce5d';
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key,
+          from_name: formData.fullName,
+          subject: `New Membership Purchase Order - ${selectedPlan.name} (${formData.preferredBranch})`,
+          name: formData.fullName,
+          phone: formData.phone,
+          email: formData.email,
+          preferredBranch: formData.preferredBranch,
+          planName: selectedPlan.name,
+          planPrice: selectedPlan.monthlyPrice,
+          isStudentDiscount: formData.isStudent ? 'Yes (ID required)' : 'No',
+        }),
+      });
+    } catch (err) {
+      console.error('Web3Forms checkout submit error:', err);
+    }
+
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
       closePlanModal();
-    }, 3000);
+    }, 3500);
   };
 
   return (

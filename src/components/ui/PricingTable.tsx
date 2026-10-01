@@ -104,12 +104,6 @@ export function PricingTable({ branch: initialBranch }: PricingTableProps) {
 
       {/* Category Description & Special Perks Banner */}
       <div className="text-center max-w-xl mx-auto space-y-2">
-        {activeBranch === 'chandni' && (
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/15 border border-emerald-500/40 text-emerald-400 text-xs font-black uppercase tracking-wider shadow-lg animate-pulse">
-            <Sparkles className="w-4 h-4 text-emerald-400 shrink-0" />
-            <span>NO REGISTRATION CHARGES!</span>
-          </div>
-        )}
         <div>
           <span className="px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-[var(--accent-subtle)] text-[var(--accent)] border border-[var(--border-glow)] inline-block">
             {currentCategory.badge || 'OFFICIAL RATE CHART'}

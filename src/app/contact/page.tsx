@@ -19,13 +19,38 @@ export default function ContactPage() {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const branchKeyMap: Record<string, string> = {
+      'Chandni Branch': '7810b74d-fff4-44fa-9a44-00f1660dce5d',
+      'Bhawanipur Branch': 'd767a327-3b04-4bd5-8bee-7071554de152',
+      'Park Street Branch': 'f9145200-8707-4541-abad-a89bdc082026',
+    };
+    const access_key = branchKeyMap[formData.branch] || '7810b74d-fff4-44fa-9a44-00f1660dce5d';
+
+    try {
+      await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key,
+          from_name: formData.name,
+          subject: `New OXY GYM Inquiry - ${formData.branch}`,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          branch: formData.branch,
+          message: formData.message,
+        }),
+      });
+    } catch (err) {
+      console.error('Form submission error:', err);
+    }
     setSubmitted(true);
   };
 
   return (
-    <div className="space-y-24 pt-28 pb-16 overflow-hidden">
+    <div className="space-y-24 pt-36 sm:pt-44 lg:pt-48 pb-16 overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         <h1 className="text-5xl sm:text-7xl font-display font-black uppercase text-[var(--text-primary)]">

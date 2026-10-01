@@ -16,7 +16,7 @@ export default function AboutPage() {
   ];
 
   return (
-    <div className="space-y-24 pt-28 pb-16 overflow-hidden">
+    <div className="space-y-24 pt-36 sm:pt-44 lg:pt-48 pb-16 overflow-hidden">
       {/* 1. HERO SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
         <h1 className="text-5xl sm:text-7xl font-display font-black uppercase text-[var(--text-primary)]">
@@ -45,7 +45,7 @@ export default function AboutPage() {
 
           <div className="relative h-96 rounded-3xl overflow-hidden shadow-2xl border border-[var(--border-color)]">
             <img
-              src="/media/chandni/images/612240f744a250350ca899a0f3398205.jpg"
+              src="/media/chandni/images/612240f744a250350ca899a0f3398205.webp"
               alt="OXY GYM Brand Story"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />

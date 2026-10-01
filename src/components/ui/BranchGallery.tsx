@@ -26,27 +26,27 @@ const CHANDNI_GALLERY: GalleryItem[] = [
 ];
 
 const BHAWANIPUR_GALLERY: GalleryItem[] = [
-  { src: '/media/bhawanipur/images/DSC_0065.JPG', title: 'Battle Rope & Agility Indoor Turf' },
-  { src: '/media/bhawanipur/images/DSC_0068.JPG', title: 'Cardio Deck & Endurance Station' },
-  { src: '/media/bhawanipur/images/DSC_0080.JPG', title: 'Yoga, Pilates & Group Studio' },
-  { src: '/media/bhawanipur/images/DSC_0081.JPG', title: 'Group Fitness Mobility Arena' },
-  { src: '/media/bhawanipur/images/DSC_0106.JPG', title: 'Biomechanics Strength Decks' },
-  { src: '/media/bhawanipur/images/DSC_0107.JPG', title: 'Free Weights & Dumbbells Zone' },
-  { src: '/media/bhawanipur/images/DSC_0113.JPG', title: 'Locker & Shower Suites' },
-  { src: '/media/bhawanipur/images/DSC_0687.JPG', title: 'South Kolkata Powerhouse Floor' },
-  { src: '/media/bhawanipur/images/DSC_0698.JPG', title: 'Jerai Biomechanics Machines' },
-  { src: '/media/bhawanipur/images/DSC_0780.JPG', title: 'High-Energy Dance Studio' },
-  { src: '/media/bhawanipur/images/DSC_0794.JPG', title: 'Functional Muscle Conditioning' },
-  { src: '/media/bhawanipur/images/dec2025/DSC_0066.JPG', title: 'Modern Clean Training Floor' },
+  { src: '/media/bhawanipur/images/DSC_0065.webp', title: 'Battle Rope & Agility Indoor Turf' },
+  { src: '/media/bhawanipur/images/DSC_0068.webp', title: 'Cardio Deck & Endurance Station' },
+  { src: '/media/bhawanipur/images/DSC_0080.webp', title: 'Yoga, Pilates & Group Studio' },
+  { src: '/media/bhawanipur/images/DSC_0081.webp', title: 'Group Fitness Mobility Arena' },
+  { src: '/media/bhawanipur/images/DSC_0106.webp', title: 'Biomechanics Strength Decks' },
+  { src: '/media/bhawanipur/images/DSC_0107.webp', title: 'Free Weights & Dumbbells Zone' },
+  { src: '/media/bhawanipur/images/DSC_0113.webp', title: 'Locker & Shower Suites' },
+  { src: '/media/bhawanipur/images/DSC_0687.webp', title: 'South Kolkata Powerhouse Floor' },
+  { src: '/media/bhawanipur/images/DSC_0698.webp', title: 'Jerai Biomechanics Machines' },
+  { src: '/media/bhawanipur/images/DSC_0780.webp', title: 'High-Energy Dance Studio' },
+  { src: '/media/bhawanipur/images/DSC_0794.webp', title: 'Functional Muscle Conditioning' },
+  { src: '/media/bhawanipur/images/DSC_0066.webp', title: 'Modern Clean Training Floor' },
 ];
 
 const PARK_STREET_GALLERY: GalleryItem[] = [
   { src: '/media/being strong logo.png', title: 'Being Strong Crown Series Official Partner' },
   { src: '/media/park street logo.png', title: 'Park Street Luxury Flagship Concept' },
-  { src: '/media/chandni/images/IMG_8875.jpg', title: 'Ultra-Luxury Gold Edition Racks' },
-  { src: '/media/bhawanipur/images/DSC_0065.JPG', title: 'Official HYROX Training Arena' },
-  { src: '/media/chandni/images/612240f744a250350ca899a0f3398205.jpg', title: 'Infrared & Cryo Recovery Suites' },
-  { src: '/media/chandni/images/IMG_9208.jpg', title: 'Executive Work Pods & Cafeteria' },
+  { src: '/media/chandni/images/IMG_8875.webp', title: 'Ultra-Luxury Gold Edition Racks' },
+  { src: '/media/bhawanipur/images/DSC_0065.webp', title: 'Official HYROX Training Arena' },
+  { src: '/media/chandni/images/612240f744a250350ca899a0f3398205.webp', title: 'Infrared & Cryo Recovery Suites' },
+  { src: '/media/chandni/images/IMG_9208.webp', title: 'Executive Work Pods & Cafeteria' },
 ];
 
 interface BranchGalleryProps {
