@@ -201,8 +201,8 @@ export default function HomePage() {
                 Ultra-exclusive HYROX & luxury athletic hub with Being Strong Crown Series, hyperbaric oxygen, infrared sauna & work pods.
               </p>
               <div className="pt-2 text-xs text-zinc-500 space-y-1">
-                <p>📍 Heart of Park Street, Kolkata</p>
-                <p>✨ Opening Puja 2026</p>
+                <p>📍 Trimurti Building, 97 Park Street, 5th Floor, Kolkata – 700016</p>
+                <p>✨ Grand Opening: 11th October 2026</p>
               </div>
             </div>
             <div className="p-6 pt-0">

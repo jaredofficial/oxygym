@@ -67,40 +67,30 @@ export function BranchLocationCard({ branch }: BranchLocationCardProps) {
           </div>
         </div>
 
-        {!isParkStreet && (
-          <div className="pt-6">
-            <a
-              href={(branch as any).mapUrl || `https://maps.google.com/?q=${encodeURIComponent(branch.address)}`}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-xl btn-accent text-xs font-black uppercase tracking-wider"
-            >
-              <Navigation className="w-4 h-4" /> GET DIRECTIONS ON GOOGLE MAPS
-            </a>
-          </div>
-        )}
+        <div className="pt-6">
+          <a
+            href={(branch as any).mapUrl || `https://maps.google.com/?q=${encodeURIComponent(branch.address)}`}
+            target="_blank"
+            rel="noreferrer"
+            className={`inline-flex items-center justify-center gap-2 w-full py-3.5 rounded-xl text-xs font-black uppercase tracking-wider ${
+              isParkStreet
+                ? 'bg-amber-400 hover:bg-amber-300 text-black shadow-xl transition-all'
+                : 'btn-accent'
+            }`}
+          >
+            <Navigation className="w-4 h-4" /> GET DIRECTIONS ON GOOGLE MAPS
+          </a>
+        </div>
       </div>
 
       {/* Embedded Map Side */}
       <div className="relative min-h-[320px] bg-[var(--bg-elevated)] overflow-hidden">
-        {isParkStreet ? (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center bg-gradient-to-br from-amber-950/40 via-black to-zinc-950">
-            <MapPin className="w-12 h-12 text-amber-400 mb-3 animate-pulse" />
-            <h4 className="text-xl font-display font-bold text-amber-300 uppercase">
-              EXACT LOCATION ANNOUNCEMENT SOON
-            </h4>
-            <p className="text-xs text-zinc-400 max-w-xs mt-2">
-              Park Street Flagship address details will be unveiled during our exclusive VIP launch event.
-            </p>
-          </div>
-        ) : (
-          <iframe
-            title={`${branch.name} Google Map`}
-            src={branch.mapEmbedUrl}
-            className="w-full h-full min-h-[350px] border-0 filter grayscale hover:grayscale-0 transition-all duration-500"
-            loading="lazy"
-          />
-        )}
+        <iframe
+          title={`${branch.name} Google Map`}
+          src={branch.mapEmbedUrl}
+          className="w-full h-full min-h-[350px] border-0 filter grayscale hover:grayscale-0 transition-all duration-500"
+          loading="lazy"
+        />
       </div>
     </div>
   );

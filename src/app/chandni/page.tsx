@@ -155,7 +155,7 @@ export default function ChandniPage() {
               </div>
 
               <div className="p-6 space-y-2 relative z-20">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between flex-wrap gap-2">
                   <h3 className="text-2xl font-display font-bold text-[var(--text-primary)]">
                     {tr.name}
                   </h3>
@@ -164,7 +164,12 @@ export default function ChandniPage() {
                   </span>
                 </div>
                 <p className="text-xs font-bold text-[var(--accent)]">{tr.experience}</p>
-                <p className="text-sm text-[var(--text-secondary)]">{tr.specialty}</p>
+                <p className="text-sm font-semibold text-[var(--text-primary)]">{tr.specialty}</p>
+                {tr.bio && (
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-2 border-t border-[var(--border-color)]/50">
+                    {tr.bio}
+                  </p>
+                )}
               </div>
             </div>
           ))}

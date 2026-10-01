@@ -126,7 +126,11 @@ export default function AboutPage() {
               <div className="p-6 space-y-1 relative z-20">
                 <h3 className="text-xl font-display font-bold">{tr.name}</h3>
                 <p className="text-xs font-bold text-[var(--accent)]">{tr.role} • {tr.experience}</p>
-                <p className="text-xs text-[var(--text-secondary)]">{tr.branch}</p>
+                <p className="text-xs font-semibold text-[var(--text-primary)] pt-1">{tr.specialty}</p>
+                {tr.bio && (
+                  <p className="text-xs text-[var(--text-secondary)] leading-relaxed pt-1">{tr.bio}</p>
+                )}
+                <p className="text-[10px] uppercase font-bold text-[var(--accent)]/80 pt-2">{tr.branch}</p>
               </div>
             </div>
           ))}
