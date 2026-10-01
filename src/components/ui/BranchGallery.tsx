@@ -11,18 +11,18 @@ interface GalleryItem {
 }
 
 const CHANDNI_GALLERY: GalleryItem[] = [
-  { src: '/media/chandni/images/612240f744a250350ca899a0f3398205.jpg', title: 'Being Strong Powerlifting Rack' },
-  { src: '/media/chandni/images/89fc5be6c54433d0622e57d5fc0de2c6.jpg', title: 'Olympic Deadlift & Barbell Platform' },
-  { src: '/media/chandni/images/IMG_8875.jpg', title: 'Dumbbell Zone up to 60kg' },
-  { src: '/media/chandni/images/IMG_9208.jpg', title: 'Protein & Coffee Station' },
-  { src: '/media/chandni/images/IMG_0179.jpg', title: 'Interactive AI Workout Kiosk' },
-  { src: '/media/chandni/images/DSC_0006.JPG', title: 'Steam Bath & Rejuvenation Suite' },
-  { src: '/media/chandni/images/IMG_0065.jpg', title: 'Heavy Duty Strength Machines' },
-  { src: '/media/chandni/images/IMG_0141.jpg', title: 'High Performance Training Floor' },
-  { src: '/media/chandni/images/IMG_7370.jpg', title: 'Powerlifting Training Arena' },
-  { src: '/media/chandni/images/IMG_8396.jpg', title: 'Customized Lever Arm Stations' },
-  { src: '/media/chandni/images/IMG_9534.jpg', title: 'Full Floor Ergonomic Layout' },
-  { src: '/media/chandni/images/ig.jpg', title: 'Community Transformation Zone' },
+  { src: '/media/chandni/images/HACK SQUAT.webp', title: '45° Linear Hack Squat Machine' },
+  { src: '/media/chandni/images/LEG PRESS.webp', title: 'Heavy-Duty Plate-Loaded Leg Press' },
+  { src: '/media/chandni/images/BENCHPRESS.webp', title: 'Olympic Bench Press Station' },
+  { src: '/media/chandni/images/MULTI-USE CABLE MACHINE.webp', title: 'Multi-Use Cable Crossover Tower' },
+  { src: '/media/chandni/images/DUMBELL RACK.webp', title: 'Pro Dumbbell Rack Zone (Up to 60kg)' },
+  { src: '/media/chandni/images/CHEST AND SHOULDER PRESS.webp', title: 'Dual Chest & Shoulder Press Machine' },
+  { src: '/media/chandni/images/INCLINE CHEST FLY MACHINE.webp', title: 'Incline Chest Fly Machine' },
+  { src: '/media/chandni/images/ASSISTED LAT PULL DOWN.webp', title: 'Assisted Lat Pulldown Station' },
+  { src: '/media/chandni/images/PECK DECK MACHINE.webp', title: 'Pec Deck & Rear Delt Fly' },
+  { src: '/media/chandni/images/CARDIO SECTION.webp', title: 'Interactive Cardio & Endurance Floor' },
+  { src: '/media/chandni/images/AB MACHINE.webp', title: 'Abdominal Crunch Machine' },
+  { src: '/media/chandni/images/TRICEP EXTENSION.webp', title: 'Seated Triceps Extension Machine' },
 ];
 
 const BHAWANIPUR_GALLERY: GalleryItem[] = [

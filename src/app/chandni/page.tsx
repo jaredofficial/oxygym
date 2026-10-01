@@ -88,7 +88,7 @@ export default function ChandniPage() {
             EQUIPMENT AT <span className="text-[var(--accent)]">CHANDNI</span>
           </h2>
           <p className="text-sm text-[var(--text-secondary)] max-w-lg mx-auto">
-            Jerai heavy-duty powerlifting racks, Olympic barbells, dumbbells up to 60kg, and battle rope agility tracks.
+            Being Strong powered biomechanical machines, 45° linear hack squats, heavy leg press, dual cable crossovers, dumbbells up to 60kg & AI workout kiosks.
           </p>
         </div>
 

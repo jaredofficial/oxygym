@@ -131,7 +131,7 @@ export default function HomePage() {
                 CHANDNI BRANCH
               </h3>
               <p className="text-xs text-[var(--text-secondary)] leading-relaxed">
-                4th & 5th floor Archade Building flagship with Being Strong power platforms, AI workout guidance kiosk, 60kg dumbbells & steam baths.
+                4th & 5th floor Chandni Arcade flagship with Being Strong biomechanical machines, 45° hack squats, leg press, cable crossovers, 60kg dumbbells & steam baths.
               </p>
               <div className="pt-2 text-xs text-[var(--text-muted)] space-y-1">
                 <p>📍 Archade Bldg, 25 B Chandni Chowk St, Esplanade</p>
