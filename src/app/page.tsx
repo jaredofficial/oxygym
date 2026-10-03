@@ -251,11 +251,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. EQUIPMENT WE USE */}
+      {/* 6. EQUIPMENTS WE USE */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div className="text-center space-y-3">
           <h2 className="text-4xl sm:text-6xl font-display font-black uppercase">
-            EQUIPMENT <span className="text-[var(--accent)]">WE USE</span>
+            EQUIPMENTS <span className="text-[var(--accent)]">WE USE</span>
           </h2>
           <p className="text-sm text-[var(--text-secondary)] max-w-lg mx-auto">
             Being Strong heavy-duty leverage arms, Olympic barbells, 60kg dumbbells, battle ropes & commercial motor treadmills.

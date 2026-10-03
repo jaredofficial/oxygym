@@ -6,6 +6,7 @@ node_modules
 .pnp.*
 app-init/
 /MEDIA/
+/MEDIA_BACKUP/
 .yarn/*
 !.yarn/patches
 !.yarn/plugins
